@@ -87,7 +87,7 @@ router.get('/etablissement/:etablissementId/dossiers', authenticateToken, async 
   try {
     const { etablissementId } = req.params;
 
-    if (req.admin.role !== 'super_admin' && req.admin.etablissement_id != etablissementId) {
+    if (req.admin.role !== 'super_admin' && req.admin.etablissement_id !== etablissementId) {
       return res.status(403).json({
         success: false,
         message: 'Accès non autorisé'

@@ -93,7 +93,6 @@ app.use('/api/documents', documentsRoutes);
 app.use('/api/paiements', paiementsRoutes);
 app.use('/api/document-validation', documentValidationRoutes);
 app.use('/api/notifications', notificationsRoutes);
-
 const { router: adminAuthRouter } = require('./routes/adminAuth');
 app.use('/api/admin/auth', adminAuthRouter);
 app.use('/api/admin/management', require('./routes/adminManagement'));
@@ -124,7 +123,14 @@ app.get('/api/test', (req, res) => {
       '/api/statistics',
       '/api/admin',
       '/api/email',
-      '/api/etudiants'
+      '/api/etudiants',
+        '/api/document-validation',
+        '/api/notifications',
+        '/api/adminAuthRouter',
+        '/api/auth',
+        '/api/management'
+
+
     ]
   });
 });
