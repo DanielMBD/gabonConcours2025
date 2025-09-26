@@ -1,33 +1,35 @@
-import fetch from "node-fetch";
+import fetch from 'node-fetch';
 
-export async function handler(event: any, context: any) {
+export async function handler(event, context) {
+    const route = event.queryStringParameters?.route;
+    const method = event.httpMethod;
+    const body = event.body;
+
+    const backendUrl = `https://backend-production-121a.up.railway.app/api/${route}`;
+
     try {
-        // Récupère la route envoyée par le frontend
-        const route = event.queryStringParameters?.route || '';
-        const backendUrl = `https://backend-production-121a.up.railway.app/api/${route}`;
+        const response = await fetch(backendUrl, {
+            method,
+            headers: {
+                'Content-Type': event.headers['content-type'] || 'application/json',
+            },
+            body: method !== 'GET' ? body : undefined,
+        });
 
-        const options: any = {
-            method: event.httpMethod,
-            headers: { "Content-Type": event.headers["content-type"] || "application/json" },
-        };
-
-        // Si POST/PUT, on passe le body
-        if (event.body && ['POST','PUT','PATCH'].includes(event.httpMethod)) {
-            options.body = event.body;
-        }
-
-        const response = await fetch(backendUrl, options);
         const data = await response.json();
 
         return {
             statusCode: response.status,
-            headers: { "Access-Control-Allow-Origin": "*" },
+            headers: {
+                'Access-Control-Allow-Origin': '*', // CORS
+                'Access-Control-Allow-Headers': 'Content-Type',
+            },
             body: JSON.stringify(data),
         };
-    } catch (error: any) {
+    } catch (error) {
         return {
             statusCode: 500,
-            body: JSON.stringify({ success: false, message: error.message }),
+            body: JSON.stringify({ message: 'Erreur proxy', error: error.message }),
         };
     }
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = '/ .netlify/functions/proxyConcours';
+const API_BASE_URL = '/api';
 
 export interface ApiResponse<T> {
   success: boolean;
