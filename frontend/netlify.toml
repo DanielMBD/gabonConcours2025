@@ -1,6 +1,6 @@
 [build]
 # dossier de publication pour Vite
-publish = "frontend/dist"
+publish = "/dist"
 # commande pour construire l'application
 command = "npm install && npm run build"
 
