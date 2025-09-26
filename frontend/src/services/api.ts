@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://backend-production-121a.up.railway.app/api';
+const API_BASE_URL = '/frontend .netlify/functions/proxyConcours';
 
 export interface ApiResponse<T> {
   success: boolean;
@@ -83,9 +83,11 @@ export class ApiService {
     }
   }
 
+  // Au lieu de `/concours`, on passe la query `?route=concours`
   async getConcours<T>(): Promise<ApiResponse<T>> {
-    return this.makeRequest<T>('/concours', 'GET');
+    return this.makeRequest<T>('/?route=concours', 'GET');
   }
+
 
   async getNiveaux<T>(): Promise<ApiResponse<T>> {
     return this.makeRequest<T>('/niveaux', 'GET');
