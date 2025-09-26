@@ -1,19 +1,18 @@
-# netlify.toml – configuration des redirects pour le backend Railway
-
 [build]
-# dossier de build pour React (par défaut create-react-app → build)
-publish = "build"
-command = "npm run build"
+# dossier de publication pour Vite
+publish = "frontend/dist"
+# commande pour construire l'application
+command = "npm install && npm run build"
 
 [[redirects]]
-# toutes les requêtes commençant par /api/ sont redirigées vers Railway
+# rediriger toutes les requêtes /api vers Railway
 from = "/api/*"
 to = "https://ton-backend-railway.up.railway.app/:splat"
 status = 200
 force = true
 
 [[redirects]]
-# redirige toutes les autres requêtes vers index.html pour React Router
+# rediriger toutes les autres requêtes vers index.html pour React Router
 from = "/*"
 to = "/index.html"
 status = 200
