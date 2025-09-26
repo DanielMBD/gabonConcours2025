@@ -36,8 +36,9 @@ export class ApiService {
 
   // ==================== Concours ====================
   async getConcours<T>(): Promise<ApiResponse<T>> {
-    return this.request<T>('/?route=concours', 'GET');
+    return this.request<T>('/concours', 'GET'); // sans query string
   }
+
 
   async getConcoursById<T>(id: string): Promise<ApiResponse<T>> {
     return this.request<T>(`/concours/${id}`, 'GET');
