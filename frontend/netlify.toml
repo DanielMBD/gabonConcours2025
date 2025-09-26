@@ -7,7 +7,7 @@ command = "npm install && npm run build"
 [[redirects]]
 # rediriger toutes les requêtes /api vers Railway
 from = "/api/*"
-to = "https://ton-backend-railway.up.railway.app/:splat"
+to = "https://backend-production-121a.up.railway.app/:splat"
 status = 200
 force = true
 

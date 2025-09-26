@@ -9,8 +9,6 @@ export interface ApiResponse<T> {
   errors?: string[];
 }
 
-export type LegacyApiResponse<T = any> = ApiResponse<T> | T;
-
 export class ApiService {
   constructor(private baseUrl: string = API_BASE_URL) {}
 
@@ -32,12 +30,11 @@ export class ApiService {
     }
   }
 
-  // Gestion FormData
   private async formDataRequest<T>(url: string, method: string, formData: FormData): Promise<ApiResponse<T>> {
     return this.request<T>(url, method, formData, true);
   }
 
-  // Concours
+  // ==================== Concours ====================
   async getConcours<T>(): Promise<ApiResponse<T>> {
     return this.request<T>('/?route=concours', 'GET');
   }
@@ -58,7 +55,7 @@ export class ApiService {
     return this.request<T>(`/concours/${id}`, 'DELETE');
   }
 
-  // Candidats
+  // ==================== Candidats ====================
   async createCandidat<T>(data: any): Promise<ApiResponse<T>> {
     return data instanceof FormData ? this.formDataRequest<T>('/candidats', 'POST', data) : this.request<T>('/candidats', 'POST', data);
   }
@@ -75,7 +72,7 @@ export class ApiService {
     return this.request<boolean>(`/candidats/check-nupcan?nupcan=${nupcan}`, 'GET');
   }
 
-  // Documents
+  // ==================== Documents ====================
   async getDocumentsByNupcan<T>(nupcan: string): Promise<ApiResponse<T>> {
     return this.request<T>(`/dossiers/nupcan/${nupcan}`, 'GET');
   }
@@ -95,7 +92,7 @@ export class ApiService {
     }
   }
 
-  // Paiements
+  // ==================== Paiements ====================
   async createPaiement<T>(data: any): Promise<ApiResponse<T>> {
     return this.request<T>('/paiements', 'POST', data);
   }
@@ -108,7 +105,7 @@ export class ApiService {
     return this.request<T>('/paiements', 'GET');
   }
 
-  // Niveaux, Filières, Établissements, Sessions
+  // ==================== Niveaux, Filières, Établissements, Sessions ====================
   async getNiveaux<T>(): Promise<ApiResponse<T>> { return this.request<T>('/niveaux', 'GET'); }
   async getFilieres<T>(): Promise<ApiResponse<T>> { return this.request<T>('/filieres', 'GET'); }
   async getEtablissements<T>(): Promise<ApiResponse<T>> { return this.request<T>('/etablissements', 'GET'); }
@@ -128,17 +125,17 @@ export class ApiService {
 
   async createSession<T>(data: any): Promise<ApiResponse<T>> { return this.request<T>('/sessions', 'POST', data); }
 
-  // Provinces
+  // ==================== Provinces ====================
   async getProvinces<T>(): Promise<ApiResponse<T>> { return this.request<T>('/provinces', 'GET'); }
 
-  // Statistiques
+  // ==================== Statistiques ====================
   async getStatistics<T>(): Promise<ApiResponse<T>> { return this.request<T>('/statistics', 'GET'); }
 
-  // Notifications
+  // ==================== Notifications ====================
   async getCandidateNotifications<T>(candidatId: string): Promise<ApiResponse<T>> { return this.request<T>(`/notifications/candidat/${candidatId}`, 'GET'); }
   async markNotificationAsRead<T>(notificationId: string): Promise<ApiResponse<T>> { return this.request<T>(`/notifications/${notificationId}/read`, 'PUT'); }
 
-  // Email
+  // ==================== Emails ====================
   async sendReceiptByEmail<T>(nupcan: string, email: string): Promise<ApiResponse<T>> { return this.request<T>('/email/send-receipt', 'POST', { nupcan, email }); }
 }
 
