@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'backend-production-121a.up.railway.app';
+const API_BASE_URL = 'backend-production-121a.up.railway.app/api';
 
 export interface ApiResponse<T> {
   success: boolean;
