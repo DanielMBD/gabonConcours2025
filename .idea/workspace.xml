@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c042ba1-48f6-4b31-99bc-a2ad088db7a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/netlify/functions/proxyConcours.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/api.ts" afterDir="false" />
-    </list>
+    <list default="true" id="5c042ba1-48f6-4b31-99bc-a2ad088db7a7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +78,7 @@
       <workItem from="1758753740627" duration="755000" />
       <workItem from="1758809402004" duration="81000" />
       <workItem from="1758812758984" duration="24000" />
-      <workItem from="1758843362842" duration="5603000" />
+      <workItem from="1758843362842" duration="6144000" />
     </task>
     <servers />
   </component>
